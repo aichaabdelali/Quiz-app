@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Quiz : Musique Classique</title>
+  </head>
+  <body>
+    <div class="quiz-container" id="quiz-container">
+        <div class="fake-navbar">
+          <span>Quiz : Musique Classique</span>
+          <div class="icones">
+            <i class="fa-solid fa-window-minimize"></i>
+            <i class="fa-regular fa-window-restore"></i>
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+        <div class="quiz">
+          <h3 class="question" id="question">Can I ask you a question...?</h3>
+          <ul class="answers-container" id="answers-container">
+            <li>
+              <input type="radio" class="answer a" name="answer" />
+              <label for="a" id="a">Answer A</label>
+            </li>
+            <li>
+              <input type="radio" class="answer b" name="answer" />
+              <label for="b" id="b">Answer B</label>
+            </li>
+            <li>
+              <input type="radio" class="answer c" name="answer" />
+              <label for="c" id="c">Answer C</label>
+            </li>
+            <li>
+              <input type="radio" class="answer d" name="answer" />
+              <label for="d" id="d">Answer D</label>
+            </li>
+          </ul>
+          <button class="next" id="next">Suivant</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

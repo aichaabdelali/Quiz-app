@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff4e0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Source Code Pro", monospace;
+}
+
+.quiz-container {
+  background-color: #fff2cc;
+  border: 1px solid #000;
+  border-radius: 10px;
+  width: 520px;
+  height: 400px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.fake-navbar {
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #000;
+  font-weight: 300;
+}
+
+i {
+  margin: 3px;
+}
+
+.quiz {
+  padding: 10px;
+  position: relative;
+  height: 370px;
+}
+
+.question {
+  font-weight: 600;
+  font-size: 26px;
+  line-break: strict;
+}
+
+.answers-container {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+li {
+  list-style: none;
+  line-break: strict;
+  margin: 8px auto;
+}
+
+button {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 2px;
+  cursor: pointer;
+  width: 120px;
+  height: 50px;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+button:hover {
+  transform: scale(0.98);
+}
