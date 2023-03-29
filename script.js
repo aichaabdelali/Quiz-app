@@ -44,6 +44,7 @@ const quizData = [
   },
 ];
 
+const answersEls = document.querySelectorAll(".answer");
 const question_el = document.getElementById("question");
 const answer_a = document.getElementById("a");
 const answer_b = document.getElementById("b");
@@ -54,14 +55,45 @@ const next_btn = document.getElementById("next");
 let current = 0;
 let score = 0;
 
-const loadQuiz = () => {
-  const currentQuiz = quizData[current];
+//doesn't work
+const deselectAnswers = () => {
+  answersEls.forEach((answerEl) => (answerEl.checked = false));
+};
 
+const selectAnswer = () => {
+  let answer;
+
+  answersEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
+    }
+  });
+
+  return answer;
+};
+
+const loadQuiz = () => {
+  deselectAnswers();
+
+  let currentQuiz = quizData[current];
   question_el.innerText = currentQuiz.question;
   answer_a.innerText = currentQuiz.a;
   answer_b.innerText = currentQuiz.b;
-  answer_c.innerText = currentQuiz.d;
+  answer_c.innerText = currentQuiz.c;
   answer_d.innerText = currentQuiz.d;
 };
 
 loadQuiz();
+
+next_btn.addEventListener("click", () => {
+  const answer = selectAnswer();
+
+  if (answer) {
+    current++;
+    if (current < quizData.length) {
+      loadQuiz();
+    } else {
+      console.log("quiz terminé");
+    }
+  }
+});
