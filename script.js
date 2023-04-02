@@ -35,7 +35,7 @@ const quizData = [
     correct: "a",
   },
   {
-    question: "Quelles oeuvres Claude Debus=ssy a-t-il dédié à sa fille ?",
+    question: "Quelles oeuvres Claude Debussy a-t-il dédié à sa fille ?",
     a: "'Clair de lune' et 'Dans le jardin'",
     b: "'Children's corner' et 'La boîte à joujou'",
     c: "'La belle aux bois dormant' et 'Rêverie'",
@@ -44,56 +44,83 @@ const quizData = [
   },
 ];
 
-const answersEls = document.querySelectorAll(".answer");
-const question_el = document.getElementById("question");
-const answer_a = document.getElementById("a");
-const answer_b = document.getElementById("b");
-const answer_c = document.getElementById("c");
-const answer_d = document.getElementById("d");
+const quiz = document.getElementById("quiz");
+const answerEls = document.querySelectorAll(".answer");
+const questionEl = document.getElementById("question");
+const answer_a = document.getElementById("a_text");
+const answer_b = document.getElementById("b_text");
+const answer_c = document.getElementById("c_text");
+const answer_d = document.getElementById("d_text");
 const next_btn = document.getElementById("next");
 
 let current = 0;
 let score = 0;
 
-//doesn't work
-const deselectAnswers = () => {
-  answersEls.forEach((answerEl) => (answerEl.checked = false));
-};
+function deselectAnswer() {
+  answerEls.forEach((answerEl) => (answerEl.checked = false));
+}
 
-const selectAnswer = () => {
+function loadQuiz() {
+  deselectAnswer();
+  const currentQuiz = quizData[current];
+
+  questionEl.innerText = currentQuiz.question;
+  answer_a.innerText = currentQuiz.a;
+  answer_b.innerText = currentQuiz.b;
+  answer_c.innerText = currentQuiz.c;
+  answer_d.innerText = currentQuiz.d;
+}
+
+loadQuiz();
+
+function selectedAnswer() {
   let answer;
 
-  answersEls.forEach((answerEl) => {
+  answerEls.forEach((answerEl) => {
     if (answerEl.checked) {
       answer = answerEl.id;
     }
   });
 
   return answer;
-};
+}
 
-const loadQuiz = () => {
-  deselectAnswers();
+function displayScore() {
+  const score_container = document.createElement("div");
+  score_container.classList.add("score-container");
+  quiz.innerHTML = "";
+  if (score >= 3) {
+    score_container.innerHTML = `
+    <span class="score">Génial! Ton score est de ${score}/${quizData.length}</span>
+    <iframe src="https://giphy.com/embed/xT5LMHxhOfscxPfIfm" width="280" height="162" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <button class="reload" onclick="location.reload()"> Réessayer </button>
+    `;
+  } else {
+    score_container.innerHTML = `
+    <span class="score">Ton score n'est que de ${score}/${quizData.length}</span>
+    <iframe src="https://giphy.com/embed/BEob5qwFkSJ7G" width="280" height="155" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <button class="reload" onclick="location.reload()"> Réessayer </button>
+    `;
+  }
 
-  let currentQuiz = quizData[current];
-  question_el.innerText = currentQuiz.question;
-  answer_a.innerText = currentQuiz.a;
-  answer_b.innerText = currentQuiz.b;
-  answer_c.innerText = currentQuiz.c;
-  answer_d.innerText = currentQuiz.d;
-};
-
-loadQuiz();
+  quiz.appendChild(score_container);
+}
 
 next_btn.addEventListener("click", () => {
-  const answer = selectAnswer();
+  const answer = selectedAnswer();
 
   if (answer) {
+    if (answer === quizData[current].correct) {
+      score++;
+      console.log(score);
+    }
+
     current++;
+
     if (current < quizData.length) {
       loadQuiz();
     } else {
-      console.log("quiz terminé");
+      displayScore();
     }
   }
 });
