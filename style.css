@@ -109,3 +109,33 @@ li {
   width: 200px;
   height: 50px;
 }
+
+@media screen and (max-width: 360px) {
+  .quiz-container {
+    width: 260px;
+    height: 520px;
+  }
+
+  .fake-navbar {
+    height: 50px;
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .icones {
+    width: 50%;
+  }
+
+  .icones i {
+    font-size: 13px;
+  }
+
+  .quiz {
+    height: 450px;
+  }
+
+  .next {
+    bottom: 10px;
+    width: 200px;
+  }
+}
