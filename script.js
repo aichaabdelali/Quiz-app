@@ -112,7 +112,6 @@ next_btn.addEventListener("click", () => {
   if (answer) {
     if (answer === quizData[current].correct) {
       score++;
-      console.log(score);
     }
 
     current++;
